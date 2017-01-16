@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+
+  <!--Import Google Icon Font-->
+     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+
+  <!-- PUSH NOTIFICATION -->
+
+
+  <!-- PUSH.JS -->
+  <!--
+    <script src="js/push.min.js"></script>
+  <script>
+
+  setInterval(function(){ Push.create("Olá Mundo!",{
+  body: "Ranor",
+  icon: "images/logo/logo.png",
+  timeout: 4000,
+  onClick: function () {
+    alert("Clicou na notificação");
+      window.focus();
+      this.close();
+    }
+  }); }, 5000);
+
+
+  </script>
+-->
+
+<!-- ONESIGNAL -->
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+<script>
+ var OneSignal = window.OneSignal || [];
+ OneSignal.push(["init", {
+   appId: "b4102571-7f84-4433-827f-f63e039aad05",
+   autoRegister: false, /* Set to true to automatically prompt visitors */
+   subdomainName: 'https://luvi-esy.onesignal.com',
+   welcomeNotification: {
+     disable: true
+    },
+   safari_web_id: 'web.onesignal.auto.2b467c5d-2ccd-4e09-a57b-cb7ab9efd0c0',
+   httpPermissionRequest: {
+      enable: false,
+      modalTitle: 'Inscrito',
+      modalMessage: "Agora você irá receber notificações de forma automática.",
+      modalButtonText: 'Sair'
+   },
+   notifyButton: {
+       enable: false /* Set to false to hide */
+   },
+   persistNotification: false,
+   promptOptions: {
+       /* These prompt options values configure both the HTTP prompt and the HTTP popup. */
+       /* actionMessage limited to 90 characters */
+       actionMessage: "Habilite as notificações para receber as informações de forma mais direta.",
+       /* acceptButtonText limited to 15 characters */
+       acceptButtonText: "HABILITAR",
+       /* cancelButtonText limited to 15 characters */
+       cancelButtonText: "NÃO, OBRIGADO"
+     }
+ }]);
+
+ OneSignal.push(function() {
+      OneSignal.showHttpPrompt();
+      //OneSignal.showHttpPermissionRequest();
+      //OneSignal.registerForPushNotifications({
+       //modalPrompt: false
+     //});
+     OneSignal.on('customPromptClick', function(promptClickResult) {
+        var promptClickResult = permissionChange.result;
+        console.log('Fullscreen Permission Message click result:', promptClickResult);
+       });
+     OneSignal.getUserId(function(userId) {
+          //console.log("OneSignal User ID:", userId);
+          if(userId != null)
+          {
+            alert(userId);
+          }
+        // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316
+      });
+    });
+
+  // OneSignal.registerForPushNotifications();
+
+</script>
+
+<!--<script>
+
+  setInterval(function(){
+
+    $.getJSON("http://luvi.esy.es/api/apiPushNotification.php");
+
+
+  },5000);
+
+</script>
+-->
+
+<!-- PUSHNEWS -->
+<!--
+<script src="//cdn.pushnews.eu/push/ilabspush.min.js" async></script>
+<script type="text/javascript">
+    var _ilabsPushConfig = {
+        optin: {
+            activation: {
+                type: "auto"
+            },
+            "%desktopImage%": "https://icons.pushnews.eu/2017/01/11/587625a2b16f7.png",
+            "%desktopTxtTitle%": "Fique ligado!",
+            "%desktopTxtBody%": "Receba conteúdos exclusivos para você!",
+            "%desktopTxtButtonNo%": "Não, obrigado",
+            "%desktopTxtButtonYes%": "Eba, quero!",
+            "%mobileImage%": "https://icons.pushnews.eu/2017/01/11/587625a2b16f7.png",
+            "%mobileTxtTitle%": "Fique ligado!",
+            "%mobileTxtBody%": "Receba conteúdos exclusivos para você!",
+            "%mobileTxtButtonNo%": "Não, obrigado",
+            "%mobileTxtButtonYes%": "Eba, quero!"
+        },
+        popup: {
+            name: "luvi esy es",
+            domain: "luvi-esy-es.pushnews.eu",
+            appId: "7fabad95-8e8b-4815-b417-1f635d6ffc17",
+            actionMessage: "quer te enviar notificações:",
+            notificationIcon: "https://icons.pushnews.eu/2017/01/11/587625a2b16f7.png",
+            notificationTitle: "Exemplo",
+            notificationMessage: "Esta é uma notificação exemplo",
+            caption: "(pode cancelar quando quiser)"
+        }
+    };
+    var IlabsPush = IlabsPush || [];
+    IlabsPush.push(["_initHttps", _ilabsPushConfig]);
+</script>
+-->
+
+
+  <title>Luvi</title>
+</head>
+<body>
+
+<!--Menu Top-->
+      <header>
+          <div class="navbar-fixed">
+              <nav class="blue lighten-1" role="navigation">
+                    <div class="nav-wrapper">
+                      <a href="#" class="brand-logo center">Luvi</a>
+                      <ul class="right hide-on-med-and-down">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#projeto">Projeto</a></li>
+                        <li><a href="#equipe">Equipe</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                      </ul>
+
+                      <ul id="nav-mobile" class="side-nav">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#projeto">Projeto</a></li>
+                        <li><a href="#equipe">Equipe</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                      </ul>
+                      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                    </div>
+              </nav>
+          </div>
+      </header>
+
+
+          <section id="home" class="parallax-container col l6 m12 s12">
+                <article>
+
+                  <h1>APLICATIVO MOBILE PARA BUSCA, DIVULGAÇÃO E CLASSIFICAÇÃO DE PROFISSIONAIS AUTÔNOMOS</h1>
+                </article>
+                 <div class="parallax"><img src="img/tools.jpg"></div>
+        </section>
+
+
+        <section id="projeto" class="parallax-container col l6 m12 s12">
+             <article>
+             	<h1>O Projeto</h1>
+             <p>O projeto aqui apresentado é uma análise sobre as opções de busca por profissionais autônomos de forma mais acessível e que tenha alguma indicação de clientes, bem como o desenvolvimento de uma aplicação que permita realizar uma busca com indicações de clientes que já compraram os serviços desses profissionais. Este trabalho relata uma breve análise sobre as necessidades de clientes em buscar por profissionais autônomos, explorando a viabilidade de se ter em mãos um aplicativo em dispositivo móvel que seja capaz tanto de cadastrar profissionais, como em pesquisar por serviços. O estudo realizado propôs uma aplicação que seja capaz de cadastrar profissionais e suas mais diversas funções, e em contra partida permite que clientes pesquisem por esses profissionais e os qualifiquem conforme o serviço prestado, servindo tanto para marketing profissional, quanto para um aplicativo de pesquisa. Para isso será apresentada uma estrutura digital móvel com uma tela intuitiva, onde com poucos cliques o usuário possa concluir sua pesquisa. A aplicabilidade da tecnologia em afazeres diários ou esporádicos tem se mostrado bem aceita, e fazer uso da tecnologia para resolver problemas e facilitar o acesso a informações otimizando o tempo das pessoas.</p>
+             </article>
+             <div class="parallax"><img src="img/project.jpg"></div>
+        </section>
+
+
+          <section id="equipe" class="parallax-container col l6 m12 s12">
+            <div class="container">
+
+              <h1>Equipe</h1>
+
+
+
+                <div class="row">
+                  <div class="col s12 m4">
+
+                          <!--Card Antonio Vitor-->
+                        <div class="card ">
+                             <div class="card-image waves-effect waves-block waves-light">
+                                   <img class="activator" src="img/team/antonio_vitor.jpg">
+                             </div>
+                               <div class="card-content">
+                                     <span class="card-title activator grey-text text-darken-4">Antonio Vitor<i class="material-icons right">more_vert</i></span>
+
+                               </div>
+                             <div class="card-reveal">
+                                 <span class="card-title grey-text text-darken-4">Antonio Vitor<i class="material-icons right">close</i></span>
+                                 <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                             </div>
+                           </div>
+                        <!--Card Antonio Vitor-->
+                  </div>
+                  <div class="col s12 m4">
+                    <!--Card Lucas Marquesr-->
+                      <div class="card ">
+                         <div class="card-image waves-effect waves-block waves-light">
+                               <img class="activator" src="img/team/lucas_marques.jpg">
+                         </div>
+                           <div class="card-content">
+                                 <span class="card-title activator grey-text text-darken-4">Lucas Marques<i class="material-icons right">more_vert</i></span>
+
+                           </div>
+                         <div class="card-reveal">
+                             <span class="card-title grey-text text-darken-4">Lucas Marques<i class="material-icons right">close</i></span>
+                             <p>Estudande do 8º perído de Sistemas de Informação na Universidade Estadual de Minas Gerais Campus Passos.</p>
+                             <a href="https://www.linkedin.com/in/lucas-marques-382aa988" target="_blank">Mais Informações</a>
+                         </div>
+                       </div>
+                       <!--Card Lucas Marquesr-->
+                  </div>
+                  <div class="col s12 m4">
+                    <!--Card Prof. Altamira-->
+                       <div class="card">
+                          <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="img/team/altamira.jpg">
+                          </div>
+                            <div class="card-content">
+                                  <span class="card-title activator grey-text text-darken-4">Prof. Altamira<i class="material-icons right">more_vert</i></span>
+
+                            </div>
+                          <div class="card-reveal">
+                              <span class="card-title grey-text text-darken-4">Prof. Altamira<i class="material-icons right">close</i></span>
+                              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                          </div>
+                        </div>
+                       <!--Card Prof. Altamira-->
+                  </div>
+
+                </div>
+
+              </div>
+
+                         <!--Final Seção-->
+               <div class="parallax"><img src="img/team.jpg"></div>
+        </section>
+
+
+        <section id="contato">
+                <div class="row">
+                  <div class="container col l6 m12 s12">
+
+                       <h1>Contato</h1>
+                       <h2>Lucas Marques</h2>
+                       <h3>lucasmarques73@hotmail.com</h3>
+                       <h2>Antonio Vitor</h2>
+                       <h3>np_vitor@hotmail.com</h3>
+
+                  </div>
+
+
+                  <form class="col l6 m12 s12">
+                      <div class="row">
+                        <div class="input-field col l12 m12 s12">
+                          <i class="material-icons prefix IconeAzul">account_circle</i>
+                             <input id="icon_prefix" type="text" class="validate">
+                             <label for="icon_prefix">Nome</label>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="input-field col l12 m12 s12">
+                          <i class="material-icons prefix IconeAzul">phone</i>
+                          <input id="last_name" type="text" class="validate">
+                          <label for="last_name">Telefone</label>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="input-field col l12 m12 s12">
+                          <i class="material-icons prefix IconeAzul">email</i>
+                          <input id="email" type="email" class="validate">
+                          <label for="email">Email</label>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="input-field col l12 m12 s12">
+                          <i class="material-icons prefix IconeAzul">comment</i>
+                          <textarea id="textarea1" class="materialize-textarea"></textarea>
+                          <label for="textarea1">Mensagem</label>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="col l12 m12 s12">
+                                  <a class="waves-effect waves-light btn btn-large blue lighten-1" id="btnEnviar"><i class="material-icons right">send</i>Enviar</a>
+                          </div>
+
+                      </div>
+                    </form>
+                  </div>
+                        </section>
+
+
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $('.parallax').parallax();
+            // Initialize collapse button
+            $(".button-collapse").sideNav({
+               closeOnClick: true
+            });
+            // Show sideNav
+          //  $('.button-collapse').sideNav('show');
+            // Hide sideNav
+          //  $('.button-collapse').sideNav('hide');
+                    });
+            $("#btnEnviar").click(function() {
+              OneSignal.push(function() {
+                  console.log("Teste Botão Enviar");
+                });
+            });
+
+        </script>
+
+</body>
+</html>
